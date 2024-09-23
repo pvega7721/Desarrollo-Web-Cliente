@@ -14,4 +14,4 @@ var apellido = "Vega";
 console.log(`${nombre} ${apellido}`);
 //6
 var palabra = "Cliente";
-var pal1 = palabra.substring("e")
+var pal1 = palabra.substring("e");
