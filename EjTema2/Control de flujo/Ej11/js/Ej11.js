@@ -24,4 +24,20 @@ if (salario > 2000) {
       salario * 1.1
     }€/mes`
   );
+} else if (salario < 1000 && edad < 30) {
+  document.write(
+    `Tu nombre es ${nombre} ${apellidos}, tienes ${edad} años y ganas 1100€/mes`
+  );
+} else if (salario < 1000 && edad > 30 && edad < 45) {
+  document.write(
+    `Tu nombre es ${nombre} ${apellidos}, tienes ${edad} años y ganas ${
+      salario * 1.03
+    }€/mes`
+  );
+} else if (salario < 1000 && edad > 45) {
+  document.write(
+    `Tu nombre es ${nombre} ${apellidos}, tienes ${edad} años y ganas ${
+      salario * 1.15
+    }€/mes`
+  );
 }
