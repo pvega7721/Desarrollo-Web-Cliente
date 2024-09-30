@@ -10,6 +10,18 @@ do {
 
 if (salario > 2000) {
   document.write(
-    `Tu nombre es ${nombre}, tienes ${edad} años y ganas ${salario}€/mes`
+    `Tu nombre es ${nombre} ${apellidos}, tienes ${edad} años y ganas ${salario}€/mes`
+  );
+} else if (salario >= 1000 && salario <= 2000 && edad > 45) {
+  document.write(
+    `Tu nombre es ${nombre} ${apellidos}, tienes ${edad} años y ganas ${
+      salario * 1.03
+    }€/mes`
+  );
+} else if (salario >= 1000 && salario <= 2000 && edad <= 45) {
+  document.write(
+    `Tu nombre es ${nombre} ${apellidos}, tienes ${edad} años y ganas ${
+      salario * 1.1
+    }€/mes`
   );
 }
