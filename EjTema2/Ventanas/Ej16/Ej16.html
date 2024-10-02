@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ventana 1</title>
+    <script type="text/javascript" src="js/Ej16.js"></script>
+  </head>
+  <body>
+    <h1>Página principal</h1>
+    <input
+      type="button"
+      onclick="nuevaVentana = window.open('/Desarrollo-Web-Cliente/EjTema2/Ventanas/Ej16/Ej16_2.html', 'Ventana2', 'top=400,left=400, width=300, height=400' )"
+      value="Abrir ventana emergente"
+    />
+    <input
+      type="button"
+      onclick=" nuevaVentana.moveBy(200,100); nuevaVentana.focus()"
+      value="Mover ventana 200x100"
+    />
+    <input
+      type="button"
+      onclick="nuevaVentana.moveTo(500,200); nuevaVentana.focus()"
+      value="Situar ventana en 500x200"
+    />
+    <input
+      type="button"
+      onclick="nuevaVentana.resizeBy(100,100); nuevaVentana.focus()"
+      value="Aumentar 100px de alto y ancho"
+    />
+    <input
+      type="button"
+      onclick="nuevaVentana.resizeTo(100,500); nuevaVentana.focus()"
+      value="Cambiar tamaño a 100x150"
+    />
+  </body>
+</html>

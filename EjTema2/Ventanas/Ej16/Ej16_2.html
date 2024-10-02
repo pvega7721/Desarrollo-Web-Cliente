@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ventana 2</title>
+  </head>
+  <body>
+    <input
+      type="button"
+      onclick="document.body.style.backgroundColor= 'green'; "
+      value="Cambiar fondo a verde"
+    />
+    <input
+      type="button"
+      onclick="window.opener.document.body.style.backgroundColor='red';"
+      value="Cambiar fondo de principal a rojo"
+    />
+    <input type="button" onclick="window.close()" value="Cerrar esta ventana" />
+    <input
+      type="button"
+      onclick="window.opener.close(), window.close()"
+      value="Cerrar ambas ventanas"
+    />
+  </body>
+</html>
+ 
