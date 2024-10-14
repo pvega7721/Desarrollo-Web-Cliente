@@ -8,8 +8,7 @@ function abrirVentana() {
   );
   //Escribe en la ventana nueva
   ventana.document.body.innerHTML += `<h1>Esta página se cerrará en ${seg} segundos</h1>`;
-  var seg = prompt("¿Cuántos segundos quieres abrir la ventana?");
-
+  var seg = parseInt(document.getElementById("segundos").value);
   var intervalo = setInterval(function () {
     document.write(`La ventana emergente se cerrará en ${seg} segundos`);
     seg--;

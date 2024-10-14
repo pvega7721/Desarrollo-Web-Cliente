@@ -14,13 +14,16 @@ function abrirVentana() {
     ventana.close();
   }, 10000);
   //funciona
-  var seg = 9;
+  var seg = 11;
 
   var intervalo = setInterval(function () {
-    document.write(`La ventana emergente se cerrará en ${seg} segundos`);
     seg--;
-    if (seg == -1) {
+    document.getElementById(
+      "temporizador"
+    ).innerHTML = `La ventana emergente se cerrará en ${seg} segundos`;
+    if (seg < 1) {
       clearInterval(intervalo);
     }
   }, 1000);
 }
+
