@@ -4,7 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Es fin de semana</title>
-    <script defer type="text/javascript" src="js/accion.js"></script>
   </head>
   <body></body>
+  <script>
+    var fecha = new Date();
+    //var ventana;
+
+    if (fecha.getDay() == 0 || fecha.getDay() == 6) {
+      //Es getDay() no getDate(), getDay es la que da el número de la semana
+      document.body.innerHTML +=
+        "<img src='imagenes/feliz.png' alt='finDeSemana'>";
+    } else {
+      document.body.innerHTML +=
+        '<img src="imagenes/triste.jpg" alt="noFinDeSemana" />';
+      //innerHTML no se esribe con (), se escribe con =
+    }
+  </script>
 </html>
