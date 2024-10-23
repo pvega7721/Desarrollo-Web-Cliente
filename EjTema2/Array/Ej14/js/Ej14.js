@@ -22,6 +22,8 @@ var libro5 = {
 var libros = new Array(libro1, libro2, libro3, libro4, libro5);
 
 var mas300 = libros.filter((libro) => libro.nPaginas >= 300);
+//var titulosLargos = libros.map((libro) => libro.titulo);
+
 mas300.forEach((element) => {
   console.log(element.titulo);
 });
