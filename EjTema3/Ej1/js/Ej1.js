@@ -1,6 +1,14 @@
-document.getElementById("cuadro").addEventListener("blur", alertar);
+var nombre;
 
-function alertar() {
-  var nombre = document.getElementById("cuadro");
-  console.log(nombre.value);
+//pasa a mayúsculas el contenido del campo y subraya el texto del campo
+function convertirMayusculas() {
+  nombre.value = nombre.value.toUpperCase();
+  nombre.select();
 }
+
+function inicio() {
+  nombre = document.getElementById("cuadro");
+  nombre.addEventListener("blur", convertirMayusculas);
+}
+//Hace que la función inicio() se ejecute la primera al cargar el documento.
+window.addEventListener("DOMContentLoaded", inicio);
