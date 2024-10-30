@@ -18,13 +18,13 @@ function validar(e) {
   ) {
   } else {
     document.getElementById("mensajeErrorNombre").innerHTML =
-      "El nombre no comienza por vocal";
+      '<p style="color: red;">El nombre no comienza por vocal</p>';
   }
   var arrayApellidos = apellidos.trim().split(" ");
   if (arrayApellidos.length >= 2) {
     //Si el apellido tiene más de dos palabras, muestra un mensaje indicándolo.
     document.getElementById("mensajeErrorApellidos").innerHTML =
-      "El apellido tiene 2 palabras o más";
+      '<p style="color: red;">El apellido tiene 2 palabras o más</p>';
   }
 }
 
