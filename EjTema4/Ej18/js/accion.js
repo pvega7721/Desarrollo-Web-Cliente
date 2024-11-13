@@ -31,7 +31,7 @@ var columnaNueva = document.getElementsByTagName("tr")[0];
 var columnax = document.createElement("th");
 columnax.innerHTML = "Checkbox";
 columnaNueva.appendChild(columnax);
-
+var i = 0; //variable para incrementar el id de los checkbox
 array.forEach((objeto) => {
   //Por cada objeto, se crea una fila y se le asigna su id.
   var fila = document.createElement("tr");
@@ -47,8 +47,11 @@ array.forEach((objeto) => {
   //creo un nuevo td para el checkbox
   var chbox = document.createElement("td");
   chbox.innerHTML = "<input type='checkbox'>";
-  //Cómo le añado un id y valor???
-
+  //checkbox contiene el objeto del checkbox
+  var checkbox = chbox.getElementsByTagName("input")[0];
+  i++;
+  checkbox.setAttribute("id", "checkbox " + i); //añadirá "checkbox1, checkbox2..."
+  checkbox.setAttribute("value", "marcar");
   //Insertamos cada una de las celdas a la fila
   fila.appendChild(nombre);
   fila.appendChild(precio);
