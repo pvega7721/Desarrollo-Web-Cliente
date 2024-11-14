@@ -80,13 +80,13 @@ function desmarcarTodos() {
     }
   });
 }
-/* falta*/
+
 function borrarSeleccionados() {
-  var checkboxes = document.getElementsByTagName("input");
-  for (let i = checkboxes.length - 1; i >= 0; i++) {
+  //array con todos los checkboxes
+  var checkboxes = document.querySelectorAll("input[type='checkbox']");
+  for (let i = checkboxes.length - 1; i >= 0; i--) {
     if (checkboxes[i].checked) {
-      console.log("hola");
-      delete checkboxes[i];
+      checkboxes[i].parentNode.parentNode.remove();
     }
   }
 }
