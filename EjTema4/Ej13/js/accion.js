@@ -71,8 +71,6 @@ var crearFormulario = function () {
 };
 
 inicio = () => {
-  document
-    .getElementById("ContentFormulario")
-    .addEventListener("click", crearFormulario);
+  document.getElementById("ContentFormulario").addEventListener("click", crearFormulario);
 };
 window.addEventListener("DOMContentLoaded", inicio);

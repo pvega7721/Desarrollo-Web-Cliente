@@ -68,7 +68,7 @@ function iniciarPrincipal() {
 }
 
 // Inicialización para la ventana secundaria
-function iniciarSecundaria() {
+var iniciarSecundaria = function () {
   document
     .getElementById("secundariaVerde")
     .addEventListener("click", cambiarSecundariaVerde);
@@ -81,7 +81,7 @@ function iniciarSecundaria() {
   document
     .getElementById("cerrarSecundariaYPrincipal")
     .addEventListener("click", cerrarSecundariaYPrincipal);
-}
+};
 
 // Detectar en qué ventana estamos
 if (document.title === "Principal") {
