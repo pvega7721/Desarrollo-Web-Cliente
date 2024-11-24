@@ -15,7 +15,7 @@ var validar = function () {
   validar = true;
   nombre = document.getElementById("nombre").value;
   tipoEntrada = document.getElementById("tipo").value;
-  fechaEvento = document.getElementById("fecha").value;
+  fechaEvento = new Date(document.getElementById("fecha").value);
   fechaActual = new Date();
   pago = document.getElementById("pago").value;
   if (nombre === "" || !isNaN(nombre)) {
@@ -32,7 +32,7 @@ var validar = function () {
   if (fechaEvento < fechaActual) {
     validar = false;
     document.getElementById("errorDiv").innerHTML =
-      "<p class='error'> La fecha debe ser superior a la actual</p>";
+      "<p class='error'> La fecha debe ser posterior a la actual</p>";
   }
 
   if (isNaN(pago) || pago < 20) {
