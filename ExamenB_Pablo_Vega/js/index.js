@@ -35,7 +35,7 @@ producto4 = {
     marca: "Adidas",
   },
   nombre: "Sudadera",
-  descripcion: "Sudadera sin capucha",
+  descripcion: "Sudadera con capucha",
   cantidad: 140,
 };
 producto5 = {
@@ -51,33 +51,34 @@ producto5 = {
 producto6 = {
   id: 6,
   categoria: {
-    tipo: "Ropa",
-    marca: "Adidas",
+    tipo: "Movil",
+    marca: "Apple",
   },
-  nombre: "Sudadera",
-  descripcion: "Sudadera sin capucha",
+  nombre: "iPhone14 pro",
+  descripcion: "Smartphone alta gama",
   cantidad: 70,
 };
 producto7 = {
   id: 7,
   categoria: {
-    tipo: "Ropa",
-    marca: "Adidas",
+    tipo: "Movil",
+    marca: "Xiaomi",
   },
-  nombre: "Sudadera",
-  descripcion: "Sudadera sin capucha",
+  nombre: "Xiaomi Mi13",
+  descripcion: "Smartphone gama media",
   cantidad: 90,
 };
 producto8 = {
   id: 8,
   categoria: {
-    tipo: "Ropa",
-    marca: "Adidas",
+    tipo: "Movil",
+    marca: "Samsung",
   },
-  nombre: "Sudadera",
-  descripcion: "Sudadera sin capucha",
+  nombre: "Samsung s24",
+  descripcion: "Smartphone alta gama",
   cantidad: 20,
 };
+//array con todos los productos
 var productos = [
   producto1,
   producto2,
@@ -97,57 +98,83 @@ var descripcion;
 var cantidad;
 var valida;
 var divTabla;
+
 var mostrarTabla = function (e) {
-  e.preventDefault;
+  e.preventDefault; //Para que el formulario no se envíe automáticamente
+
+  //Nos traemos los objetos y no los values, para poder acceder a todos sus atributos.
   divTabla = document.getElementById("resultado");
-  id = document.getElementById("searchId").value;
-  nombre = document.getElementById("searchNombre").value;
-  descripcion = document.getElementById("searchDescripcion").value;
-  cantidad = document.getElementById("searchCantidad").value;
+  id = document.getElementById("searchId");
+  nombre = document.getElementById("searchNombre");
+  descripcion = document.getElementById("searchDescripcion");
+  cantidad = document.getElementById("searchCantidad");
+
+  //Creación de la estructura de la tabla
+  var table = document.createElement("table");
+  var thead = document.createElement("thead");
+
+  //Creación de las cabeceras de la tabla
+  //id
+  var thId = document.createElement("th");
+  thId.innerHTML = "ID";
+  thId.style.fontWeight = "bold";
+  thead.appendChild(thId);
+
+  //Tipo
+  var thTipo = document.createElement("th");
+  thTipo.innerHTML = "Tipo";
+  thTipo.style.fontWeight = "bold";
+  thead.appendChild(thTipo);
+
+  //Nombre
+  var thNombre = document.createElement("th");
+  thNombre.innerHTML = "Nombre";
+  thNombre.style.fontWeight = "bold";
+  thead.appendChild(thNombre);
+
+  //Cantidad
+  var thCantidad = document.createElement("th");
+  thCantidad.innerHTML = "Cantidad";
+  thCantidad.style.fontWeight = "bold";
+  thead.appendChild(thCantidad);
+
+  table.appendChild(thead);
+  var tbody = document.createElement("tbody");
+
+  valida = true;
   //recorre la lista de productos y coprueba si cumplen los criterios de búsqueda o no.
   productos.forEach((producto) => {
-    if (
-      producto.id === id &&
-      producto.nombre === nombre &&
-      producto.descripcion === descripcion &&
-      producto.cantidad >= cantidad
-    ) {
-      //Añade el producto válido a la nueva tabla
-      productosTabla.push(producto);
-      valida = true;
+    if (id.value && id.value == producto.id) {
+      tbody.appendChild(pintarFila(producto));
+    } else if (nombre.value && nombre.value == producto.nombre) {
+      tbody.appendChild(pintarFila(producto));
+    } else if (cantidad.value && cantidad.value == producto.cantidad) {
+      tbody.appendChild(pintarFila(producto));
+    } else if (descripcion.value && descripcion.value == producto.descripcion) {
+      tbody.appendChild(pintarFila(producto));
+      //Si todos los campos están vaciós, muetra toda la tabla
     } else if (
-      producto.id === "" &&
-      producto.nombre === "" &&
-      producto.descripcion === "" &&
-      producto.cantidad === ""
+      id.value == "" &&
+      nombre.value == "" &&
+      descripcion.value == "" &&
+      cantidad.value == ""
     ) {
-      //Imprimir tabla con todos los productos
+      tbody.appendChild(pintarFila(producto));
+    } else {
       valida = false;
-    } else if (
-      producto.id != id &&
-      producto.nombre != nombre &&
-      producto.descripcion != descripcion &&
-      producto.cantidad < cantidad
-    ) {
-      //mostrar mensaje y la tabla vacía
-      valida = false;
-      document.getElementById("mensaje").innerHTML =
-        '<p style="color: red;"><b>No existen productos con esos datos</b></p>';
-
-      let table = document.createElement("table");
-      let th = document.createElement("th");
-      table.appendChild(th);
-      let tbody = document.createElement("tbody");
-      table.appendChild(tbody);
-      for (let i = 0; i < 4; i++) {
-        let tr = document.createElement("tr");
-        th.appendChild(tr);
-      }
     }
   });
   if (valida) {
-    //imprimo tabla válida
+    let mensaje = document.getElementById("mensaje");
+    mensaje.innerHTML = "No hay productos con esos requistos";
+    mensaje.style.color = "red";
+    mensaje.style.fontWeight = "bold";
   }
+
+  table.appendChild(tbody);
+  resultado.appendChild(table);
+
+  function pintarFila(producto) {}
 };
 
 inicio = () => {
