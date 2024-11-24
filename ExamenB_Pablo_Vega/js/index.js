@@ -152,8 +152,8 @@ var mostrarTabla = function (e) {
       tbody.appendChild(pintarFila(producto));
     } else if (descripcion.value && descripcion.value == producto.descripcion) {
       tbody.appendChild(pintarFila(producto));
-      //Si todos los campos están vaciós, muetra toda la tabla
     } else if (
+      //Si todos los campos están vaciós, muetra toda la tabla
       id.value == "" &&
       nombre.value == "" &&
       descripcion.value == "" &&
@@ -172,9 +172,28 @@ var mostrarTabla = function (e) {
   }
 
   table.appendChild(tbody);
-  resultado.appendChild(table);
+  divTabla.appendChild(table);
 
-  function pintarFila(producto) {}
+  function pintarFila(producto) {
+    let tr = document.createElement("tr");
+
+    let tdId = document.createElement("td");
+    tdId.innerHTML = producto.id;
+    tr.appendChild(tdId);
+
+    let tdTipo = document.createElement("td");
+    tdTipo.innerHTML = producto.tipo;
+    tr.appendChild(tdTipo);
+
+    let tdNombre = document.createElement("td");
+    tdNombre.innerHTML = producto.nombre;
+    tr.appendChild(tdNombre);
+
+    let tdCantidad = document.createElement("td");
+    tdCantidad.innerHTML = producto.cantidad;
+    tr.appendChild(tdCantidad);
+    return tr;
+  }
 };
 
 inicio = () => {
