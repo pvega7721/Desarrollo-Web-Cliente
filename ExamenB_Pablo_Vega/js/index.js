@@ -89,9 +89,7 @@ var productos = [
   producto7,
   producto8,
 ];
-//array que guardará los valores a mostrar en la tabla
-var productosTabla = [];
-//datos solicitados
+//Declaramos vairables para almacenar los datos introducidos en el formulario
 var id;
 var nombre;
 var descripcion;
@@ -102,43 +100,45 @@ var divTabla;
 var mostrarTabla = function (e) {
   e.preventDefault; //Para que el formulario no se envíe automáticamente
 
-  //Nos traemos los objetos y no los values, para poder acceder a todos sus atributos.
+  //A las variables creadas, les asignamos los datos del formulario
   divTabla = document.getElementById("resultado");
   id = document.getElementById("searchId");
   nombre = document.getElementById("searchNombre");
   descripcion = document.getElementById("searchDescripcion");
   cantidad = document.getElementById("searchCantidad");
 
-  //Creación de la estructura de la tabla
+  //Creamos la estructura de la tabla
   var table = document.createElement("table");
   var thead = document.createElement("thead");
 
   //Creación de las cabeceras de la tabla
-  //id
-  var thId = document.createElement("th");
+  var thId = document.createElement("th"); //id
   thId.innerHTML = "ID";
   thId.style.fontWeight = "bold";
+  //Añadimos cada uno de los campos a la cabecera
   thead.appendChild(thId);
 
-  //Tipo
-  var thTipo = document.createElement("th");
+  var thTipo = document.createElement("th"); //Tipo
   thTipo.innerHTML = "Tipo";
   thTipo.style.fontWeight = "bold";
+  //Añadimos cada uno de los campos a la cabecera
   thead.appendChild(thTipo);
 
-  //Nombre
-  var thNombre = document.createElement("th");
+  var thNombre = document.createElement("th"); //Nombre
   thNombre.innerHTML = "Nombre";
   thNombre.style.fontWeight = "bold";
+  //Añadimos cada uno de los campos a la cabecera
   thead.appendChild(thNombre);
 
-  //Cantidad
-  var thCantidad = document.createElement("th");
+  var thCantidad = document.createElement("th"); //Cantidad
   thCantidad.innerHTML = "Cantidad";
   thCantidad.style.fontWeight = "bold";
+  //Añadimos cada uno de los campos a la cabecera
   thead.appendChild(thCantidad);
 
+  //Añadimos la cabecera a la tabla
   table.appendChild(thead);
+  //Creamos el body de la tabla, donde irán los productos
   var tbody = document.createElement("tbody");
 
   valida = true;
@@ -153,7 +153,7 @@ var mostrarTabla = function (e) {
     } else if (descripcion.value && descripcion.value == producto.descripcion) {
       tbody.appendChild(pintarFila(producto));
     } else if (
-      //Si todos los campos están vaciós, muetra toda la tabla
+      //Si todos los campos están vaciós, muetra todos los productos
       id.value == "" &&
       nombre.value == "" &&
       descripcion.value == "" &&
@@ -164,11 +164,13 @@ var mostrarTabla = function (e) {
       valida = false;
     }
   });
-  if (valida) {
+  //Si la búsqueda no es válida, muestra un mensaje y oculta la tabla
+  if (!valida) {
     let mensaje = document.getElementById("mensaje");
     mensaje.innerHTML = "No hay productos con esos requistos";
     mensaje.style.color = "red";
     mensaje.style.fontWeight = "bold";
+    divTabla.style.display = none;
   }
 
   table.appendChild(tbody);
@@ -182,7 +184,7 @@ var mostrarTabla = function (e) {
     tr.appendChild(tdId);
 
     let tdTipo = document.createElement("td");
-    tdTipo.innerHTML = producto.tipo;
+    tdTipo.innerHTML = producto.categoria.tipo;
     tr.appendChild(tdTipo);
 
     let tdNombre = document.createElement("td");
