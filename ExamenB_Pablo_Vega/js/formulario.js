@@ -9,7 +9,7 @@ var opcion;
 var numAleatorio;
 var temporizador;
 
-var validar = function () {
+var validacion = function () {
   opcion = document.getElementById("opcion").value;
   adivinar = document.getElementById("adivinar");
   validar = true;
@@ -60,6 +60,6 @@ var validar = function () {
 };
 
 inicio = () => {
-  document.getElementById("reservarBtn").addEventListener("click", validar);
+  document.getElementById("reservarBtn").addEventListener("click", validacion);
 };
 window.addEventListener("DOMContentLoaded", inicio);
