@@ -78,6 +78,7 @@ producto8 = {
   descripcion: "Smartphone alta gama",
   cantidad: 20,
 };
+//Todo esto fuera de la función
 //array con todos los productos
 var productos = [
   producto1,
@@ -145,12 +146,16 @@ var mostrarTabla = function (e) {
   //recorre la lista de productos y coprueba si cumplen los criterios de búsqueda o no.
   productos.forEach((producto) => {
     if (id.value && id.value == producto.id) {
+      //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
     } else if (nombre.value && nombre.value == producto.nombre) {
+      //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
     } else if (cantidad.value && cantidad.value == producto.cantidad) {
+      //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
     } else if (descripcion.value && descripcion.value == producto.descripcion) {
+      //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
     } else if (
       //Si todos los campos están vaciós, muetra todos los productos
@@ -172,28 +177,36 @@ var mostrarTabla = function (e) {
     mensaje.style.fontWeight = "bold";
     divTabla.style.display = none;
   }
-
+  //Si todo ha ido correctamente, añadimos la tabla al div
   table.appendChild(tbody);
   divTabla.appendChild(table);
 
+  //Crea una fila para un producto pasado como parametro
   function pintarFila(producto) {
+    //Crea la fila para la tabla
     let tr = document.createElement("tr");
 
+    //Crea la celda para el id del producto y la añade a la fila
     let tdId = document.createElement("td");
     tdId.innerHTML = producto.id;
     tr.appendChild(tdId);
 
+    //Crea la celda para el tipo y la añade a la fila
     let tdTipo = document.createElement("td");
     tdTipo.innerHTML = producto.categoria.tipo;
     tr.appendChild(tdTipo);
 
+    //Crea la celda para el nombre y la añade a la fila
     let tdNombre = document.createElement("td");
     tdNombre.innerHTML = producto.nombre;
     tr.appendChild(tdNombre);
 
+    //Crea la celda para la cantidad y la añade a la fila
     let tdCantidad = document.createElement("td");
     tdCantidad.innerHTML = producto.cantidad;
     tr.appendChild(tdCantidad);
+
+    //Devuelve la fila completa para añadirla al tbody
     return tr;
   }
 };
