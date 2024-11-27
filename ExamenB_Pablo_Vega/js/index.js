@@ -99,10 +99,11 @@ var valida;
 var divTabla;
 
 var mostrarTabla = function (e) {
-  e.preventDefault; //Para que el formulario no se envíe automáticamente
+  e.preventDefault(); //Para que el formulario no se envíe automáticamente
 
   //A las variables creadas, les asignamos los datos del formulario
   divTabla = document.getElementById("resultado");
+  divTabla.innerHTML = ""; // Limpiar contenido previo del divTabla para que no aparezca una nueva cada vez que pulse el botón
   id = document.getElementById("searchId");
   nombre = document.getElementById("searchNombre");
   descripcion = document.getElementById("searchDescripcion");
@@ -111,6 +112,13 @@ var mostrarTabla = function (e) {
   //Creamos la estructura de la tabla
   var table = document.createElement("table");
   var thead = document.createElement("thead");
+
+  //Columna extra
+  var thVender = document.createElement("th");
+  thVender.innerHTML = "Vender";
+  thVender.style.fontWeight = "bold";
+  //Añadimos cada uno de los campos a la cabecera
+  thead.appendChild(thVender);
 
   //Creación de las cabeceras de la tabla
   var thId = document.createElement("th"); //id
@@ -145,13 +153,16 @@ var mostrarTabla = function (e) {
   valida = true;
   //recorre la lista de productos y coprueba si cumplen los criterios de búsqueda o no.
   productos.forEach((producto) => {
-    if (id.value && id.value == producto.id) {
+    if (id.value && parseInt(id.value) == producto.id) {
       //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
     } else if (nombre.value && nombre.value == producto.nombre) {
       //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
-    } else if (cantidad.value && cantidad.value == producto.cantidad) {
+    } else if (
+      cantidad.value &&
+      parseInt(cantidad.value) == producto.cantidad
+    ) {
       //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
     } else if (descripcion.value && descripcion.value == producto.descripcion) {
@@ -175,7 +186,7 @@ var mostrarTabla = function (e) {
     mensaje.innerHTML = "No hay productos con esos requistos";
     mensaje.style.color = "red";
     mensaje.style.fontWeight = "bold";
-    divTabla.style.display = none;
+    divTabla.style.display = "none";
   }
   //Si todo ha ido correctamente, añadimos la tabla al div
   table.appendChild(tbody);
@@ -186,6 +197,11 @@ var mostrarTabla = function (e) {
     //Crea la fila para la tabla
     let tr = document.createElement("tr");
 
+    //Extra: Crea la celda para vender todo y la añade al la fila
+    let tdVender = document.createElement("td");
+    tdVender.innerHTML =
+      "<a href='' id='venderTodo' style='color: green;'>Vender Todo</a>";
+    tr.appendChild(tdVender);
     //Crea la celda para el id del producto y la añade a la fila
     let tdId = document.createElement("td");
     tdId.innerHTML = producto.id;
@@ -205,6 +221,15 @@ var mostrarTabla = function (e) {
     let tdCantidad = document.createElement("td");
     tdCantidad.innerHTML = producto.cantidad;
     tr.appendChild(tdCantidad);
+
+    //Al hacer hover se cambia el color de fondo de la celda
+    tr.addEventListener("mouseover", () => {
+      tr.style.backgroundColor = "#ddeeac";
+    });
+    //Al quitar el ratón de encima, vuelve al color original
+    tr.addEventListener("mouseout", () => {
+      tr.style.backgroundColor = "darkseagreen";
+    });
 
     //Devuelve la fila completa para añadirla al tbody
     return tr;
