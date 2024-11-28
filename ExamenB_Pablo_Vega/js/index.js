@@ -153,19 +153,16 @@ var mostrarTabla = function (e) {
   valida = true;
   //recorre la lista de productos y coprueba si cumplen los criterios de búsqueda o no.
   productos.forEach((producto) => {
-    if (id.value && parseInt(id.value) == producto.id) {
+    if (parseInt(id.value) == producto.id) {
       //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
-    } else if (nombre.value && nombre.value == producto.nombre) {
+    } else if (nombre.value == producto.nombre) {
       //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
-    } else if (
-      cantidad.value &&
-      parseInt(cantidad.value) == producto.cantidad
-    ) {
+    } else if (parseInt(cantidad.value) == producto.cantidad) {
       //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
-    } else if (descripcion.value && descripcion.value == producto.descripcion) {
+    } else if (descripcion.value == producto.descripcion) {
       //Si es válido, añade la fila devuelta por pintarFila con los datos al body
       tbody.appendChild(pintarFila(producto));
     } else if (
@@ -199,9 +196,33 @@ var mostrarTabla = function (e) {
 
     //Extra: Crea la celda para vender todo y la añade al la fila
     let tdVender = document.createElement("td");
-    tdVender.innerHTML =
-      "<a href='' id='venderTodo' style='color: green;'>Vender Todo</a>";
+    let enlace = document.createElement("a");
+    enlace.id = "venderTodo";
+    enlace.textContent = "Vender Todo";
+    enlace.style.color = "green";
+
+    enlace.addEventListener("click", (e) => {
+      e.preventDefault;
+      var ventana = window.open(
+        "about:blank",
+        "_blank",
+        "width=600,height=600"
+      );
+      ventana.document.write(`
+      <h2>${producto.id}</h2>
+      <p><b>${producto.descripcion}</b></p>
+      <p>${producto.categoria.marca}</p>
+      <button id=boton>Vender<button>`);
+
+      ventana.document.getElementById("boton").addEventListener("click", () => {
+        producto.cantidad = 0;
+        console.log(producto.cantidad);
+      });
+    });
+
+    tdVender.appendChild(enlace);
     tr.appendChild(tdVender);
+
     //Crea la celda para el id del producto y la añade a la fila
     let tdId = document.createElement("td");
     tdId.innerHTML = producto.id;
