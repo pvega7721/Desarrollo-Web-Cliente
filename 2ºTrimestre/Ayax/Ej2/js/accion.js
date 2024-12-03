@@ -11,57 +11,55 @@ window.addEventListener("DOMContentLoaded", () => {
 function traerDatos() {
   const peticion = new XMLHttpRequest();
   peticion.open("GET", "https://jsonplaceholder.typicode.com/posts");
-  peticion.send();
 
   peticion.addEventListener("readystatechange", () => {
     if (peticion.readyState !== 4) {
       return;
     }
     if (peticion.status >= 200 && peticion.status < 300) {
-      return JSON.parse(peticion.responseText);
+      datos = JSON.parse(peticion.responseText);
+      pintarTabla(datos);
     }
   });
+  peticion.send();
 }
 
-peticion.addEventListener("readystatechange", () => {
-  if (peticion.readyState !== 4) {
-    return;
-  }
-  if (peticion.status >= 200 && peticion.status < 300) {
-    let usuarios = JSON.parse(peticion.responseText);
-    console.log(usuarios);
+function pintarTabla(datos) {
+  let divTabla = document.getElementById("tabla-container");
+  divTabla.innerHTML = "";
+  let tabla = document.createElement("table");
+  let thead = document.createElement("thead");
+  let tbody = document.createElement("tbody");
 
-    var tabla = document.createElement("table");
-    boton.addEventListener("click", () => {
-      var cabecera = document.createElement("thead");
+  let thTitle = document.createElement("th");
+  thTitle.innerHTML = "Title";
+  thead.appendChild(thTitle);
 
-      tabla.appendChild(cabecera);
+  let thBody = document.createElement("th");
+  thBody.innerHTML = "Body";
+  thead.appendChild(thBody);
 
-      var trCabecera = document.createElement("tr");
-      cabecera.appendChild(trCabecera);
-      var tdTitle = document.createElement("th");
-      tdTitle.innerHTML = "<h2>Title</h2>";
-      trCabecera.appendChild(tdTitle);
+  datos.forEach((dato) => {
+    tbody.appendChild(pintarFila(dato));
+  });
 
-      tabla.appendChild(thBody);
+  tabla.appendChild(thead);
+  tabla.appendChild(tbody);
+  divTabla.appendChild(tabla);
+}
 
-      usuarios.forEach((el) => {
-        pintarFila(el);
-      });
+function pintarFila(usuario) {
+  let tr = document.createElement("tr");
 
-      document.getElementById("tabla-container").appendChild(tabla);
+  //celda para el titulo
+  let tdTitle = document.createElement("td");
+  tdTitle.innerHTML = `${usuario.title}`;
+  tr.appendChild(tdTitle);
 
-      function pintarFila(el) {
-        var tr = document.createElement("tr");
+  //celda para el body
+  let tdBody = document.createElement("td");
+  tdBody.innerHTML = `${usuario.body}`;
+  tr.appendChild(tdBody);
 
-        var tdTitulo = document.createElement("td");
-        tdTitulo.innerHTML = el.title;
-        tr.appendChild(tdTitulo);
-
-        var tdBody = document.createElement("td");
-        tdBody.innerHTML = el.body;
-        tr.appendChild(tdBody);
-      }
-    });
-  }
-});
+  return tr;
+}
