@@ -1,6 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
   var boton = document.getElementById("boton");
-  var datos;
 
   boton.addEventListener("click", (e) => {
     e.preventDefault();
