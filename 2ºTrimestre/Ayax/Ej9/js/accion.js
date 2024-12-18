@@ -32,6 +32,10 @@ function cargarExtras() {
           var divPost = document.createElement("div");
           divPost.innerHTML = `Titulo: ${post.title} <br> Cuerpo: ${post.body} <br><br>`;
           div.appendChild(divPost);
+
+          divPost.addEventListener("click", () => {
+            cargarComentarios();
+          });
         });
       })
   );
@@ -39,3 +43,4 @@ function cargarExtras() {
 }
 
 //cargarComentarios
+function cargarComentarios() {}
