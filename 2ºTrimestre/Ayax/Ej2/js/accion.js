@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function traerDatos() {
   const peticion = new XMLHttpRequest();
   peticion.open("GET", "https://jsonplaceholder.typicode.com/posts");
-
+  //El evento readystatechange comprueba el estado de readyState (Opened, Loading, Done...)
   peticion.addEventListener("readystatechange", () => {
     if (peticion.readyState !== 4) {
       return;
