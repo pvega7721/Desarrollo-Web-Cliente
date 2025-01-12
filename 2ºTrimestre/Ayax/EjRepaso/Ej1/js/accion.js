@@ -8,6 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 var titulo = document.createElement("h2");
 var div = document.createElement("div");
+
 async function mostrarDatos(){
     try{
         div.innerHTML = "";
@@ -43,8 +44,7 @@ async function mostrarDatos(){
         enlace.innerHTML = "Ver receta completa";
 
         div.appendChild(enlace);
-
-
+        
         document.body.appendChild(titulo);
         document.body.appendChild(div);
     }catch(error){
