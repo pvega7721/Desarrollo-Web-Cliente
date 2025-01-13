@@ -3,17 +3,18 @@ inicio = () => {
   //Contiene el array de objetos devuelto por la api
   const peticion = new XMLHttpRequest();
 
-  //abrimos la conexión Get con esa url ("tipo", "URL")
+  //abrimos la conexión Get ("tipo", "URL")
   peticion.open("GET", "https://jsonplaceholder.typicode.com/users/5");
 
   //Enviamos la petición
   peticion.send();
 
   peticion.addEventListener("readystatechange", () => {
-    if (peticion.readyState !== 4) {
+    if (peticion.readyState !== 4) {//si no se optiene respuesta, no hace nada
       return;
     }
     if (peticion.status >= 200 && peticion.status < 300) {
+       //si ha llegado aquí la respuesta se ha completado con exito
       console.log("éxito");
       //convierte lo que devuelve la petición a JSON
       let usuario = JSON.parse(peticion.responseText);

@@ -3,10 +3,15 @@ window.addEventListener("DOMContentLoaded", () => {
     mostrarDatos();
 });
 
+//Hay que poner async antes de declarar el método
 async function mostrarDatos() {
     contenedor = document.getElementById("datos");
-    var response = await fetch("https://jsonplaceholder.typicode.com/users"); //guarda los datos de la API en la variable response
-    var usuarios = await response.json(); //Convierte los datos de la API en un JSON y los guarda en la variable usuarios
+    
+    //guarda los datos de la API en la constante response
+    const response = await fetch("https://jsonplaceholder.typicode.com/users"); 
+
+    //Convierte los datos de la API en un JSON y los guarda en la variable usuarios
+    var usuarios = await response.json(); 
     
     usuarios.forEach(usuario => {
         if(usuario.id == 5){

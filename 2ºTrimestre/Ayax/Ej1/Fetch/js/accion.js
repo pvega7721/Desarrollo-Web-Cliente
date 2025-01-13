@@ -5,8 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function mostrarDatos() {
     contenedor = document.getElementById("datos");
+    //Hace la petición a la API
     fetch("https://jsonplaceholder.typicode.com/users").then((response) =>
+    //Parsea la respuesta (response) a JSON
     response.json().then((usuarios) => {
+        //Usuarios es el parámetro que recibe la función anónima, 
+        // representa la lista de usuarios obtenidos
         usuarios.forEach(usuario => {
             if(usuario.id == 5){
                 console.log(usuario);
