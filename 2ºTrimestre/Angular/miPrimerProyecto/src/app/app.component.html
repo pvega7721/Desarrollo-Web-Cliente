@@ -9,3 +9,20 @@
 <h3>Nombre: {{ nombre }}</h3>
 
 <h3>{{ mayorEdad() }}</h3>
+
+<app-user-profile></app-user-profile>
+
+<p [class]="naranja">Hola, mi nombre es {{ name }}</p>
+<p [innerHTML]="name"></p>
+<p>{{ imgUrl }}</p>
+
+Imagen 1 : <img [src]="imgUrl" /> <br />
+Imagen 2 : <img src="{{ imgUrl }}" />
+
+<input type="checkbox" [checked]="marcado" />
+<input type="text" [disabled]="deshabilitado" />
+
+<div>{{ asignatura.nombre }}</div>
+<div>{{ asignatura.codigo }}</div>
+
+<app-alumno></app-alumno>
