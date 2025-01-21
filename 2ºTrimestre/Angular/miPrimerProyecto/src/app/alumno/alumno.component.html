@@ -1,8 +1,37 @@
 <p>alumno works!</p>
 
-<h1 class="titulo">Componente Alumno</h1>
+<h1 class="titulo">Componente Alumno</h1><!--h1 con título-->
+
+<!--Mostrar los valores-->
 <p>Mi nombre es {{ nombre }}</p>
 <p>Mi apellido es {{ apellido }}</p>
 <p>Tengo {{ edad }} años</p>
 <p>Mi dni es {{ dni }}</p>
+
+<!--Mostrar la edad x 5-->
 <p>Mi edad multiplicada por 5 es {{ edadx5 }}</p>
+
+<!-- Muestra mensaje si es mayor de edad o no-->
+<p>{{ mensajeMayorEdad }}</p>
+
+<p>Introducir DNI</p>
+<!--Deshabilito el input con la propiedad creada en el ts-->
+<input [disabled]="deshabilitado" type="text" #nuevoDNI (keyup)="(actualizarDNI(nuevoDNI.value))"/>
+
+<!-- Div para mostrar el DNI actualizado -->
+<div>Nuevo DNI: {{dni}}</div>
+
+<p>Éste checkbox estará marcado si el alumno es mayor de edad</p>
+<!--Disabled para que solo cambie en función de la edad-->
+<input type="checkbox" [checked]="checkMayorMenor()" disabled >
+
+<p>Al marcar este checkbox aparecerá una alerta</p>
+<input type="checkbox" (change)="mensajeMarcado($event)" (change)="cambiarTexto()">
+
+<p>{{check}}</p>
+
+<label for="sexo">Hombre</label>
+<input type="radio" name="sexo" id="hombre" value="H" (change)="sexoElegido('H')">
+<br>
+<label for="sexo">Mujer</label>
+<input type="radio" name="sexo" id="mujer" value="M" (change)="sexoElegido('M')">
