@@ -1,0 +1,9 @@
+.aviso {
+  color: red;
+}
+.calculo {
+  display: flex;
+  gap: 10px;
+  height: 30px;
+  align-items: center;
+}

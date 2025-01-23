@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AlumnoComponent } from './alumno/alumno.component';
+import { FormsModule } from '@angular/forms';
+import { DatosLibroComponent } from './datos-libro/datos-libro.component';
 
 @Component({
   // Define el selector del componente, usado en las plantillas HTML
@@ -9,7 +11,12 @@ import { AlumnoComponent } from './alumno/alumno.component';
   // Indica que el componente es independiente
   standalone: true,
   // Importa módulos necesarios para el componente
-  imports: [/*RouterOutlet,*/ UserProfileComponent, AlumnoComponent],
+  imports: [
+    /*RouterOutlet,*/ UserProfileComponent,
+    AlumnoComponent,
+    FormsModule,
+    DatosLibroComponent,
+  ],
   // Ruta al archivo de plantilla HTML del componente
   templateUrl: './app.component.html',
   // Ruta al archivo de estilos CSS del componente
@@ -43,4 +50,25 @@ export class AppComponent {
     nombre: 'Entorno Cliente',
     codigo: 'DWEC',
   };
+
+  nombreCompanero: string = '';
+
+  mostrarNombre(): string {
+    return (this.nombreCompanero = 'Enrique');
+  }
+
+  valor: string = '';
+
+  mostrarTexto(event: any) {
+    this.valor += event.target.value + ',';
+  }
+  ejemplo: string = 'HOla';
+
+  texto1: string = '';
+  texto2: string = '';
+
+  valorHijo: string = '';
+  recuperarNombre(nombre: string) {
+    this.valorHijo = nombre;
+  }
 }

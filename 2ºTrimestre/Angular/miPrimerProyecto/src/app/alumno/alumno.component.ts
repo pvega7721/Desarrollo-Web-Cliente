@@ -16,35 +16,36 @@ export class AlumnoComponent {
   dni: string = '12345678a';
   edadx5: number = this.edad * 5;
   //Mayor o menor de edad con operador ternario
-  mensajeMayorEdad: string = this.edad >= 18 ? 'Mayor de edad' : 'Menor de edad';
+  mensajeMayorEdad: string =
+    this.edad >= 18 ? 'Mayor de edad' : 'Menor de edad';
 
   // Método para actualizar el DNI
   actualizarDNI(valor: string): void {
     this.dni = valor;
   }
-  deshabilitado: boolean = true;
-  desmarcado: boolean = false;
+  deshabilitado: boolean = false;
+  desmarcado: boolean = true;
 
   //Controla que el alumno sea mayor o menor de edad
   checkMayorMenor(): boolean {
-    return this.edad >=18;
+    return this.edad >= 18;
   }
   //Al marcar el checkbox, muestra una alerta
-  mensajeMarcado(event: Event): void{
-    alert("Hola");
+  mensajeMarcado(event: Event): void {
+    alert('Hola');
   }
 
-  check: string = "antes de pulsar";
+  check: string = 'antes de pulsar';
 
-  cambiarTexto(): void{
-    this.check = "checkbox pulsado";
+  cambiarTexto(): void {
+    this.check = 'checkbox pulsado';
   }
 
   sexoElegido(valor: string): void {
-    if(valor == 'H'){
-      this.check = "Pulsado hombre";
-    } else{
-      this.check = "Pulsado mujer";
+    if (valor == 'H') {
+      this.check = 'Pulsado hombre';
+    } else {
+      this.check = 'Pulsado mujer';
     }
   }
 }

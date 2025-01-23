@@ -10,8 +10,14 @@
 
 <h3>{{ mayorEdad() }}</h3>
 
-<app-user-profile></app-user-profile>
+<h1>User profile</h1>
+<app-user-profile
+  name="Harry Potter"
+  role="Mago"
+  (selected)="recuperarNombre($event)"
+></app-user-profile>
 
+ValorHijo = {{ valorHijo }}
 <p [class]="naranja">Hola, mi nombre es {{ name }}</p>
 <p [innerHTML]="name"></p>
 <p>{{ imgUrl }}</p>
@@ -25,4 +31,25 @@ Imagen 2 : <img src="{{ imgUrl }}" />
 <div>{{ asignatura.nombre }}</div>
 <div>{{ asignatura.codigo }}</div>
 
+<h1>Componente alumnos</h1>
 <app-alumno></app-alumno>
+<br /><br />
+<button id="boton" (click)="mostrarNombre()">Pulsame</button>
+<input type="text" value="{{ nombreCompanero }}" />
+<br /><br />
+<input type="text" (keyup)="mostrarTexto($event)" /> <br />
+
+<p>{{ valor }}</p>
+<br />
+
+<input type="text" [(ngModel)]="ejemplo" />
+<div>
+  {{ ejemplo }}
+</div>
+
+<input type="text" [(ngModel)]="texto1" value="{{ texto2.toUpperCase() }}" />
+<br />
+<input type="text" [(ngModel)]="texto2" value="{{ texto1.toUpperCase() }}" />
+
+<h1>Datos Libros</h1>
+<app-datos-libro></app-datos-libro>
