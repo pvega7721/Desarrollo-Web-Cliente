@@ -1,0 +1,18 @@
+<form action="#">
+  <label for="nombre">Nombre:</label>
+  <input type="text" name="nombre" [(ngModel)]="nombre" /> <br />
+  <label for="apellido">Apellido:</label>
+  <input type="text" name="apellido" [(ngModel)]="apellido" />
+  <button (click)="enviar()">Enviar</button>
+  <p *ngIf="mostrarMensaje" style="background-color: blueviolet">
+    Alta correcta del usuario {{ nombre }} {{ apellido }}
+  </p>
+</form>
+
+<div *ngFor="let persona of personas">
+  <p>
+    Nombre: {{ persona.nombre }} <br />
+    Apellidos:{{ persona.apellidos }} <br />
+    Edad: {{ persona.edad }}
+  </p>
+</div>
