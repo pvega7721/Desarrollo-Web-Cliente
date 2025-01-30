@@ -1,0 +1,9 @@
+<p>Listado de articulos:</p>
+
+<div *ngFor="let articulo of articulos; let i = index">
+  <p>Articulo {{ i + 1 }}:</p>
+  <p>Nombre: {{ articulo.nombre }}</p>
+  <p>Precio: {{ articulo.precio }}€</p>
+  <p>Unidades: {{ articulo.unidades }}</p>
+  <p>-------------------------------------</p>
+</div>
