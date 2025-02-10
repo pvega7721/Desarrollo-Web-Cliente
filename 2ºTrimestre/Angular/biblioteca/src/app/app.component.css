@@ -1,0 +1,9 @@
+h1 {
+  text-align: center;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 15px;
+}
