@@ -12,10 +12,10 @@ import { DatosLibroComponent } from './datos-libro/datos-libro.component';
   standalone: true,
   // Importa módulos necesarios para el componente
   imports: [
-    /*RouterOutlet,*/ UserProfileComponent,
+    DatosLibroComponent, //Aquí se importan los componentes
     AlumnoComponent,
+    /*RouterOutlet,*/ UserProfileComponent,
     FormsModule,
-    DatosLibroComponent,
   ],
   // Ruta al archivo de plantilla HTML del componente
   templateUrl: './app.component.html',
