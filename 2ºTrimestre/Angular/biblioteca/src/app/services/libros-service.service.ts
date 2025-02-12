@@ -5,32 +5,43 @@ import { Libro } from '../model/libro.model';
   providedIn: 'root',
 })
 export class LibrosServiceService {
-  constructor() {}
+  constructor() {
 
-  libros = [
+  }
+
+  private Libros: Libro[] = [
     {
-      id: 1,
+      id: 0,
       titulo: 'Don Quijote de la Mancha',
       autor: 'Miguel de Cervantes',
     },
     {
-      id: 2,
+      id: 1,
       titulo: 'Cien años de soledad',
       autor: 'Gabriel García Márquez',
     },
     {
-      id: 3,
+      id: 2,
       titulo: '1984',
       autor: 'George Orwell',
     },
     {
-      id: 4,
+      id: 3,
       titulo: 'El Principito',
       autor: 'Antoine de Saint-Exupéry',
     },
-  ];
+  ] ;
 
-  getLibros(): Libro[] {
-    return this.libros;
+  getLibros(){
+    return this.Libros;
+  }
+
+  getLibroPorId( id: number): any{
+    
+    console.log("num: " + id);
+
+
+    return this.Libros[id];
+
   }
 }

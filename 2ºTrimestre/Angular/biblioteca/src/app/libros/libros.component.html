@@ -6,9 +6,9 @@
     <title>Libros</title>
   </head>
   <body>
-    <h3>Libros</h3>
-    <ul>
-      <!-- <li *ngFor="let libro of libros">{{ libro.id }} - {{ libro.title }}</li> -->
+    <h3>Libros de la biblioteca</h3>
+    <ul>                                      <!--concatena el id a la ruta del enlace-->
+      <li *ngFor="let libro of libros"> <a [routerLink] = "['/libro-detalle', libro.id]"> {{ libro.id }} - {{ libro.titulo }}</a></li>
     </ul>
   </body>
 </html>
