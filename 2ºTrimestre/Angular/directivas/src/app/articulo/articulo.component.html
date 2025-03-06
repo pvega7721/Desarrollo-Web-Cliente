@@ -1,22 +1,29 @@
 <h2>Artículo</h2>
 <form action="#">
-  <label for="nombre">Nombre </label>
-  <input type="text" name="nombre" [(ngModel)]="nombre" />
+    <label for="nombre">Nombre </label>
+    <input type="text" name="nombre" [(ngModel)]="nombre">
 
-  <br />
+    <br>
 
-  <label for="precio">Precio </label>
-  <input type="text" name="precio" [(ngModel)]="precio" />
+    <label for="precio">Precio </label>
+    <input type="text" name="precio" [(ngModel)]="precio">
 
-  <br />
+    <br>
 
-  <label for="unidades">Unidades </label>
-  <input type="text" name="unidades" [(ngModel)]="unidades" />
+    <label for="unidades">Unidades </label>
+    <input type="text" name="unidades" [(ngModel)]="unidades">
 
-  <br />
+    <br>
 
-  <button (click)="comprar()">Comprar</button>
+    <button (click)="comprar()">Comprar</button>
 </form>
-<div style="background-color: rgb(196, 142, 247)">
-  <app-listado-articulo [articulos]="articulos"></app-listado-articulo>
+
+<p>Articulos que tenemos: </p>
+
+<div *ngFor="let articulo of articulos; let i = index">
+    <p>Articulo {{i + 1}}:</p>
+    <p>Nombre: {{articulo.nombre}}</p>
+    <p>Precio: {{articulo.precio}}</p>
+    <p>Unidades: {{articulo.unidades}}</p>
+    <p>-------------------------------------</p>
 </div>

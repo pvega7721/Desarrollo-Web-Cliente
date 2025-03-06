@@ -1,27 +1,22 @@
 <h1>Alta de usuario</h1>
 <form action="#">
   <label for="nombre">Nombre: </label>
-  <input type="text" name="nombre" [(ngModel)]="nombre" /> <br />
-  <br />
+  <input type="text" name="nombre" [(ngModel)]="nombre" /> <br /> <br>
   <label for="apellido">Apellido: </label>
-  <input type="text" name="apellido" [(ngModel)]="apellido" /> <br />
-  <br />
-  <!--ngModel se usa para enlazar el valor del input con la variable del TS-->
+  <input type="text" name="apellido" [(ngModel)]="apellido" /> <br> <br> <!--ngModel se usa para enlazar el valor del input con la variable del TS-->
   <button (click)="enviar()">Enviar</button>
   <p *ngIf="mostrarMensaje" style="background-color: blueviolet">
-    Alta correcta del usuario {{ nombre }} {{ apellido }}
-    <!--Solo muestra el mensaje al pulsar el botón-->
+    Alta correcta del usuario {{ nombre }} {{ apellido }} <!--Solo muestra el mensaje al pulsar el botón-->
   </p>
-  <p *ngIf="ocultarMensaje">Ningun alta</p>
+  <p *ngIf="ocultarMensaje" >
+    Ningun alta
+  </p>
 </form>
 
-<div *ngFor="let persona of personas; let i = index">
-  <!--Recorro el array personas con ngFor y añado el índice-->
-  <div *ngIf="persona.edad >= 30">
-    <!--Solo lo muestra si tiene más de 30 años-->
+<div *ngFor="let persona of personas; let i = index"><!--Recorro el array personas con ngFor y añado el índice-->
+  <div *ngIf="persona.edad >= 30"> <!--Solo lo muestra si tiene más de 30 años-->
     <p>
-      {{ i + 1 }}. Nombre: {{ persona.nombre }} {{ persona.apellidos }},
-      {{ persona.edad }} años<br />
+      {{ i + 1 }}. Nombre: {{ persona.nombre }} {{ persona.apellidos }},  {{ persona.edad }} años<br />
     </p>
   </div>
 </div>
@@ -35,6 +30,4 @@
   <p *ngIf="boton3">Botón 3 pulsado</p>
 </div>
 
-<div style="background-color: rgb(170, 253, 253)">
-  <app-articulo></app-articulo>
-</div>
+<app-articulo></app-articulo> <!--Llamada al componente articulo-->

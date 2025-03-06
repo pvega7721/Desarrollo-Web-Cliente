@@ -1,11 +1,10 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms'; //Para poder usar ngModel
-import { CommonModule, NgIf } from '@angular/common'; //Para poder usar ngIf o ngFor
-import { ArticuloComponent } from './articulo/articulo.component';
+import { CommonModule, NgIf } from '@angular/common';//Para poder usar ngIf o ngFor
+import { ArticuloComponent } from "./articulo/articulo.component"; 
 
-export interface Persona {
-  //Las interfaces se crean fuera del componente
+export interface Persona { //Las interfaces se crean fuera del componente
   nombre: string;
   apellidos: string;
   edad: number;
@@ -29,8 +28,7 @@ export class AppComponent {
     this.mostrarMensaje = true;
   }
 
-  personas: Persona[] = [
-    //Array de objetos de tipo Persona
+  personas: Persona[] = [ //Array de objetos de tipo Persona
     { nombre: 'Juan', apellidos: 'Pérez', edad: 30 },
     { nombre: 'Ana', apellidos: 'García', edad: 25 },
     { nombre: 'Luis', apellidos: 'Martínez', edad: 35 },
@@ -41,13 +39,13 @@ export class AppComponent {
   boton1: boolean = false;
   boton2: boolean = false;
   boton3: boolean = false;
-  mostrarBoton1() {
+  mostrarBoton1(){
     this.boton1 = true;
   }
-  mostrarBoton2() {
+  mostrarBoton2(){
     this.boton2 = true;
   }
-  mostrarBoton3() {
+  mostrarBoton3(){
     this.boton3 = true;
   }
 }

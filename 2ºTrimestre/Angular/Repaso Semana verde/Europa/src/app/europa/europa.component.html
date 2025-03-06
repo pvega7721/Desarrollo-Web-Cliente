@@ -1,0 +1,18 @@
+<h2>Paises de Europa</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre Común</th>
+      <th>Capital</th>
+      <th>¿Miembro de Naciones Unidas?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pais of paises$ | async">
+      <td>{{ pais.name.common }}</td>
+      <td>{{ pais.capital[0] }}</td>
+      <td *ngIf="pais.unMember">Sí</td>
+      <td *ngIf="!pais.unMember">No</td>
+    </tr>
+  </tbody>
+</table>

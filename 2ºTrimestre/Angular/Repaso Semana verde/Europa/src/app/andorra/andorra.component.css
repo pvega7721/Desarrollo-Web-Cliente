@@ -1,0 +1,10 @@
+img {
+  width: 100px;
+  height: 100px;
+}
+.infoAndorra {
+  border: 1px solid gray;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
